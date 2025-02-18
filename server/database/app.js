@@ -16,11 +16,11 @@ const dealerships_data = JSON.parse(fs.readFileSync("dealerships.json", 'utf8'))
 function seedDatabase() {
     try {
         Reviews.deleteMany({}).then(()=>{
-        Reviews.insertMany(reviews_data.Reviews);
+        Reviews.insertMany(reviews_data["reviews"]);
         console.log("Reviews inserted successfully!");
       });
         Dealerships.deleteMany({}).then(()=>{
-        Dealerships.insertMany(dealerships_data.Dealerships);
+        Dealerships.insertMany(dealerships_data["dealerships"]);
         console.log("Dealers inserted successfully!");
       });
       
