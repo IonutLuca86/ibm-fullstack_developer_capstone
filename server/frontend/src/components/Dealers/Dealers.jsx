@@ -26,23 +26,24 @@ const Dealers = () => {
     }
   }
 
-  const get_dealers = async ()=>{
-    const res = await fetch(dealer_url, {
-      method: "GET"
-    });
-    const retobj = await res.json();
-    if(retobj.status === 200) {
-      let all_dealers = Array.from(retobj.dealers)
-      let states = [];
-      all_dealers.forEach((dealer)=>{
-        states.push(dealer.state)
-      });
-
-      setStates(Array.from(new Set(states)))
-      setDealersList(all_dealers)
-    }
-  }
+  
   useEffect(() => {
+    const get_dealers = async ()=>{
+        const res = await fetch(dealer_url, {
+          method: "GET"
+        });
+        const retobj = await res.json();
+        if(retobj.status === 200) {
+          let all_dealers = Array.from(retobj.dealers)
+          let states = [];
+          all_dealers.forEach((dealer)=>{
+            states.push(dealer.state)
+          });
+    
+          setStates(Array.from(new Set(states)))
+          setDealersList(all_dealers)
+        }
+      }
     get_dealers();
   },[]);  
 
